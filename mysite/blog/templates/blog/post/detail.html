@@ -6,6 +6,17 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
+    <p class="tags">
+        Tags:
+        {% for tag in post.tags.all %}
+            <a href="{% url 'blog:post_list_by_tag' tag.slug %}">
+                {{ tag.name }}
+            </a>
+            {% if not forloop.last %}
+                ,
+            {% endif %}
+        {% endfor %}
+    </p>
     <p class="date">
         Published {{ post.publish }} by {{ post.author }}
     </p>
@@ -22,11 +33,11 @@
     {% endwith %}
     {% for comment in comments %}
         <div class="comment">
-        <p>
-            Comment {{ forloop.revcounter }} by {{ comment.name }}
-            {{ comment.created }}
-        </p>
-        {{ comment.body|linebreaks }}
+            <p>
+                Comment {{ forloop.revcounter }} by {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.body|linebreaks }}
         </div>
     {% empty %}
         <p>There are no comments yet.</p>
