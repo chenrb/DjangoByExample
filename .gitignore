@@ -1,9 +1,6 @@
-# Python:
-*.pyc
-*.so
-*.egg
-*.egg-info
-dist
-build
 .idea
-mysite/db.sqllite3
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+.DS_Store
