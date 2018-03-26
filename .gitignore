@@ -1,5 +1,9 @@
-.idea
+# Python:
 *.pyc
-__pycache__
-db.sqlite3
-.DS_Store
+*.so
+*.egg
+*.egg-info
+dist
+build
+.idea
+mysite/db.sqllite3
