@@ -3,6 +3,9 @@ __author__ = 'John 2018/3/30 17:45'
 
 from django import template
 from django.db.models import Count
+from django.utils.safestring import mark_safe
+
+import markdown
 
 from ..models import Post
 
@@ -27,3 +30,8 @@ def get_most_commented_posts(count=5):
     return Post.published.annotate(
         total_comments=Count('comments')
     ).order_by('-total_comments')[:count]
+
+
+@register.filter(name='markdown')
+def markdown_format(text):
+    return mark_safe(markdown.markdown(text))  # 标记为安全，不进行转义
