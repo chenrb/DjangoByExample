@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'taggit',
+    # 不需要添加django.contrib.sites应用，详情见https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
