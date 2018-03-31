@@ -33,6 +33,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ('-publish',)
+        verbose_name = '文章'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.title
@@ -57,6 +59,8 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ('created',)
+        verbose_name = '评论'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
