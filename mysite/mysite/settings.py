@@ -41,7 +41,20 @@ INSTALLED_APPS = [
     'taggit',
     # 不需要添加django.contrib.sites应用，详情见https://stackoverflow.com/questions/9736975/django-admin-doesnotexist-at-admin
     'django.contrib.sitemaps',
+    # 由于原文搜索功能需要安装solr平台，版本太多，下载失败，所以单使用django-haystack
+    # 参考 https://www.zmrenwu.com/post/45/
+    'haystack',
 ]
+
+# django-haystack settings
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
