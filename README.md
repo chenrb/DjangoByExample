@@ -1,2 +1,3 @@
 # DjangoByExample
-使用Django2.0敲一遍《Django By Example》中的项目
+《Django By Example》中的blog项目
+solr暂时不做
